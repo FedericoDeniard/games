@@ -44,7 +44,7 @@ export const TicTacToeRender = () => {
   };
 
   return (
-    <>
+    <div>
     <div
       className="tic-tac-toe-board"
       style={{
@@ -69,7 +69,13 @@ export const TicTacToeRender = () => {
         </div>
       ))}
     </div>
-      {checkFinished() && <Button text={t("RESTART")} action={restartGame} />}
-    </>
+      {
+        <Button
+          text={t("RESTART")}
+          action={restartGame}
+          show={checkFinished()}
+        />
+      }
+    </div>
   );
 };
