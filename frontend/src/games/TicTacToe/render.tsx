@@ -4,8 +4,15 @@ import { TicTacToe } from ".";
 import { Button } from "../../components/button";
 import { useTranslation } from "react-i18next";
 
+import useSound from "use-sound";
+import clickSound from "../../assets/sounds/click.mp3";
+
 export const TicTacToeRender = () => {
   const { t } = useTranslation();
+  const [playClick] = useSound(clickSound, {
+    interrupt: true,
+    playbackRate: 1.5,
+  });
 
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
   const [gameState, setGameState] = useState({
@@ -25,6 +32,7 @@ export const TicTacToeRender = () => {
     const game = gameRef.current;
     const madeMove = game.makeMove(index);
     if (madeMove) {
+      playClick();
       updateGame();
     }
   };
