@@ -14,21 +14,16 @@ export const SettingsPage = () => {
       <h1>Settings</h1>
       <div className="settings-container">
         <div className="input-container">
-          <span>Sound</span>
-          <div className="checkbox-wrapper-8">
+          <div className="checkbox-wrapper-1">
             <input
-              className="tgl tgl-skewed"
-              id="cb3-8"
+              id="example-1"
+              className="substituted"
               type="checkbox"
+              aria-hidden="true"
               checked={sound}
               onChange={(e) => setSound(e.target.checked)}
             />
-            <label
-              className="tgl-btn"
-              data-tg-off="OFF"
-              data-tg-on="ON"
-              htmlFor="cb3-8"
-            ></label>
+            <label htmlFor="example-1">Checkbox</label>
           </div>
         </div>
       </div>
