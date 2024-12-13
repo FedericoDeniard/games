@@ -5,11 +5,14 @@ import { BrowserRouter } from "react-router";
 import { RouterComponent } from "./router/router.tsx";
 
 import "./i18next/index.ts";
+import { AppContextProvider } from "./context/index.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <RouterComponent />
-    </BrowserRouter>
+    <AppContextProvider>
+      <BrowserRouter>
+        <RouterComponent />
+      </BrowserRouter>
+    </AppContextProvider>
   </StrictMode>
 );

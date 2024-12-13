@@ -6,12 +6,15 @@ import { useTranslation } from "react-i18next";
 
 import useSound from "use-sound";
 import clickSound from "../../assets/sounds/click.mp3";
+import { useAppConfig } from "../../context";
 
 export const TicTacToeRender = () => {
   const { t } = useTranslation();
+  const { sound: soundOn } = useAppConfig();
   const [playClick] = useSound(clickSound, {
     interrupt: true,
     playbackRate: 1.5,
+    soundEnabled: soundOn,
   });
 
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
