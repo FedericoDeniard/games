@@ -4,5 +4,6 @@
   "NOT_FOUND": "This page was not found",
   "BACK": "Back",
   "TIC-TAC-TOE": "Tic Tac Toe",
-  "CHOOSE-GAME": "Select a game"
+  "CHOOSE-GAME": "Select a game",
+  "RESTART": "Restart game"
 }

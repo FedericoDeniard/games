@@ -4,5 +4,6 @@
   "NOT_FOUND": "No se pudo encontrar la página",
   "BACK": "Atrás",
   "TIC-TAC-TOE": "Ta Te Ti",
-  "CHOOSE-GAME": "Selecciona un juego"
+  "CHOOSE-GAME": "Selecciona un juego",
+  "RESTART": "Reiniciar juego"
 }
