@@ -23,7 +23,7 @@ export const SettingsPage = () => {
               checked={sound}
               onChange={(e) => setSound(e.target.checked)}
             />
-            <label htmlFor="example-1">Checkbox</label>
+            <label htmlFor="example-1">{t("SOUND")}</label>
           </div>
         </div>
       </div>
