@@ -6,12 +6,15 @@ import { useTranslation } from "react-i18next";
 
 import useSound from "use-sound";
 import clickSound from "../../assets/sounds/click.mp3";
+import { useAppConfig } from "../../context";
 
 export const TicTacToeRender = () => {
   const { t } = useTranslation();
+  const { sound: soundOn } = useAppConfig();
   const [playClick] = useSound(clickSound, {
     interrupt: true,
     playbackRate: 1.5,
+    soundEnabled: soundOn,
   });
 
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
@@ -53,30 +56,30 @@ export const TicTacToeRender = () => {
 
   return (
     <div className="container">
-    <div
-      className="tic-tac-toe-board"
-      style={{
+      <div
+        className="tic-tac-toe-board"
+        style={{
           gridTemplateColumns: `repeat(${Math.sqrt(
             gameState.board.length
           )}, auto)`,
-      }}
-    >
+        }}
+      >
         {gameState.board.map((cell, index) => (
-        <div
-          className={`tic-tac-toe-cell ${
+          <div
+            className={`tic-tac-toe-cell ${
               checkFinished() && gameState.hasWon.includes(index)
-              ? "tic-tac-toe-won"
+                ? "tic-tac-toe-won"
                 : checkFinished()
-              ? "tic-tac-toe-lost"
-              : ""
-          } ${cell === "X" ? "tic-tac-toe-cross" : "tic-tac-toe-circle"}`}
-          key={index}
-          onClick={() => handleMove(index)}
-        >
-          {cell}
-        </div>
-      ))}
-    </div>
+                ? "tic-tac-toe-lost"
+                : ""
+            } ${cell === "X" ? "tic-tac-toe-cross" : "tic-tac-toe-circle"}`}
+            key={index}
+            onClick={() => handleMove(index)}
+          >
+            {cell}
+          </div>
+        ))}
+      </div>
       {
         <Button
           text={t("RESTART")}

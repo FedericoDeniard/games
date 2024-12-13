@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
-import { Button } from "../components/button";
+import { Button } from "../../components/button";
 import { useTranslation } from "react-i18next";
-import "./index.css";
 
 export const NotFoundPage = () => {
   const { t } = useTranslation();
