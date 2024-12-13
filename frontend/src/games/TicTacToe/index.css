@@ -1,6 +1,6 @@
 .tic-tac-toe-board {
   display: grid;
-  max-width: 400px;
+  max-width: fit-content;
 }
 
 .tic-tac-toe-cell {
@@ -10,4 +10,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 800;
+  -webkit-text-stroke: 1px black;
+  font-size: 30px;
+  width: 100px;
+}
+
+.tic-tac-toe-won {
+  background-color: #66bb6a;
+}
+
+.tic-tac-toe-lost {
+  color: #ff7043;
+}
+
+.tic-tac-toe-cross {
+  color: #2196f3;
+}
+
+.tic-tac-toe-circle {
+  color: #ff4081;
 }

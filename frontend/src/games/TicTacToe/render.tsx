@@ -21,7 +21,13 @@ export const TicTacToeRender = () => {
     >
       {board.map((cell, index) => (
         <div
-          className="tic-tac-toe-cell"
+          className={`tic-tac-toe-cell ${
+            hasWon.every((value) => value !== null) && hasWon.includes(index)
+              ? "tic-tac-toe-won"
+              : hasWon.some((value) => value !== null)
+              ? "tic-tac-toe-lost"
+              : ""
+          } ${cell === "X" ? "tic-tac-toe-cross" : "tic-tac-toe-circle"}`}
           key={index}
           onClick={() => handleMove(index)}
         >
