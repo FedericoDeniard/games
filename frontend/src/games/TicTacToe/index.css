@@ -1,0 +1,13 @@
+.tic-tac-toe-board {
+  display: grid;
+  max-width: 400px;
+}
+
+.tic-tac-toe-cell {
+  border: 1px solid #ccc;
+  text-align: center;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
