@@ -22,14 +22,14 @@ export class TicTacToe {
     return this.won;
   }
 
-  public makeMove(index: number): void {
+  public makeMove(index: number): boolean {
+    let madeMove = false;
     if (this.board[index] === "" && this.won.every((value) => value === null)) {
       this.board[index] = this.countTurn() % 2 === 0 ? "O" : "X";
-      if (this.checkWin()) {
-        console.log("WIN", this.won);
-      }
+      madeMove = true;
+      this.checkWin()
     }
-
+    return madeMove
   }
 
   public reset(): void {

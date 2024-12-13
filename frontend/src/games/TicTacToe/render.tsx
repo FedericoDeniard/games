@@ -9,9 +9,11 @@ export const TicTacToeRender = () => {
 
   const handleMove = (index: number) => {
     const game = gameRef.current;
-    game.makeMove(index);
+    const madeMove = game.makeMove(index);
+    if (madeMove) {
     setBoard([...game.getBoard()]);
     setHasWon(game.getWon());
+    }
   };
 
   return (
