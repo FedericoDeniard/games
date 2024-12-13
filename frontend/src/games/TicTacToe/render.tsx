@@ -4,31 +4,49 @@ import { TicTacToe } from ".";
 
 export const TicTacToeRender = () => {
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
-  const [board, setBoard] = useState<string[]>(gameRef.current.getBoard());
-  const [hasWon, setHasWon] = useState<number[]>(new Array(3));
+  const [gameState, setGameState] = useState({
+    board: gameRef.current.getBoard(),
+    hasWon: new Array(3),
+  });
+
+  const updateGame = () => {
+    const game = gameRef.current;
+    setGameState(() => ({
+      board: [...game.getBoard()],
+      hasWon: [...game.getWon()],
+    }));
+  };
 
   const handleMove = (index: number) => {
     const game = gameRef.current;
     const madeMove = game.makeMove(index);
     if (madeMove) {
-    setBoard([...game.getBoard()]);
-    setHasWon(game.getWon());
+      updateGame();
     }
+  };
+
+  const restartGame = () => {
+    const game = gameRef.current;
+    game.reset();
+    updateGame();
   };
 
   return (
     <div
       className="tic-tac-toe-board"
       style={{
-        gridTemplateColumns: `repeat(${Math.sqrt(board.length)}, auto)`,
+          gridTemplateColumns: `repeat(${Math.sqrt(
+            gameState.board.length
+          )}, auto)`,
       }}
     >
-      {board.map((cell, index) => (
+        {gameState.board.map((cell, index) => (
         <div
           className={`tic-tac-toe-cell ${
-            hasWon.every((value) => value !== null) && hasWon.includes(index)
+              gameState.hasWon.every((value) => value !== null) &&
+              gameState.hasWon.includes(index)
               ? "tic-tac-toe-won"
-              : hasWon.some((value) => value !== null)
+                : gameState.hasWon.some((value) => value !== null)
               ? "tic-tac-toe-lost"
               : ""
           } ${cell === "X" ? "tic-tac-toe-cross" : "tic-tac-toe-circle"}`}
