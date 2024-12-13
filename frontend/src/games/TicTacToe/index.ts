@@ -18,6 +18,10 @@ export class TicTacToe {
     return this.board;
   }
 
+  public getWon(): Array<number> {
+    return this.won;
+  }
+
   public makeMove(index: number): void {
     if (this.board[index] === "" && this.won.every((value) => value === null)) {
       this.board[index] = this.countTurn() % 2 === 0 ? "O" : "X";

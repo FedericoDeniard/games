@@ -4,12 +4,14 @@ import { TicTacToe } from ".";
 
 export const TicTacToeRender = () => {
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
-  const [board, setBoard] = useState(gameRef.current.getBoard());
+  const [board, setBoard] = useState<string[]>(gameRef.current.getBoard());
+  const [hasWon, setHasWon] = useState<number[]>(new Array(3));
 
   const handleMove = (index: number) => {
     const game = gameRef.current;
     game.makeMove(index);
     setBoard([...game.getBoard()]);
+    setHasWon(game.getWon());
   };
 
   return (
