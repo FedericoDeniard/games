@@ -10,7 +10,7 @@ export const SettingsPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
+    <div className="container settings-page">
       <h1>Settings</h1>
       <div className="settings-container">
         <div className="input-container">
