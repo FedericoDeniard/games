@@ -11,7 +11,7 @@ export const SettingsPage = () => {
 
   return (
     <div className="container settings-page">
-      <h1>Settings</h1>
+      <h1>{t("SETTINGS")}</h1>
       <div className="settings-container">
         <div className="input-container">
           <div className="checkbox-wrapper-1">
