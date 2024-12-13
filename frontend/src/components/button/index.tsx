@@ -4,11 +4,13 @@ export const Button = ({
   action,
   color,
   show = true,
+  width,
 }: {
   text: String;
   action: () => void;
   color?: string;
   show?: boolean;
+  width?: number;
 }) => {
   return (
     <button
@@ -16,6 +18,7 @@ export const Button = ({
       style={{
         backgroundColor: color ?? "#1a1a1a",
         visibility: show ? "visible" : "hidden",
+        width: width ? `${width}px` : "fit-content",
       }}
     >
       {text}
