@@ -8,7 +8,7 @@ export const TicTacToePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <div className="TicTacToePage">
+    <div className="container">
       <h1>{t("TIC-TAC-TOE")}</h1>
       <TicTacToeRender />
       <Button text={t("BACK")} action={() => navigate("/")} />

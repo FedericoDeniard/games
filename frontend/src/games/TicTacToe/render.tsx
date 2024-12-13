@@ -44,7 +44,7 @@ export const TicTacToeRender = () => {
   };
 
   return (
-    <div>
+    <div className="container">
     <div
       className="tic-tac-toe-board"
       style={{
