@@ -41,11 +41,16 @@ export class TicTacToe {
     let hasWon: boolean = false;
     let i = 0;
     while (i < this.board.length && !hasWon) {
-      if (
-        this.checkLine(i, 1) ||
-        this.checkLine(i, 3) ||
-        this.checkLine(i, 4)
-      ) {
+      if (i % 3 === 0 && this.checkLine(i, 1)) {
+        hasWon = true;
+      }
+      else if (i < 3 && this.checkLine(i, 3)) {
+        hasWon = true;
+      }
+      else if (i === 0 && this.checkLine(i, 4)) {
+        hasWon = true;
+      }
+      else if (i === 2 && this.checkLine(i, 2)) {
         hasWon = true;
       }
       i++;
