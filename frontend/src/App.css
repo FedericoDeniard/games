@@ -1,0 +1,11 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  button {
+    background-color: #f9f9f9;
+  }
+}
