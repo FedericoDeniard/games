@@ -1,6 +1,5 @@
 
 interface TicTacToeProps {
-  size?: number;
   initialValue?: string;
 }
 
@@ -9,9 +8,8 @@ export class TicTacToe {
   private won: Array<number> = new Array(3);
 
   public constructor(props: TicTacToeProps) {
-    const size = props.size || 3;
     const initialValue = props.initialValue || "";
-    this.board = new Array(size * size).fill(initialValue);
+    this.board = new Array(3 * 3).fill(initialValue);
   }
 
   public getBoard(): string[] {
