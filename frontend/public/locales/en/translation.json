@@ -1,6 +1,8 @@
 {
-  "HELLO": "Hello",
+  "HELLO": "Welcome!",
   "ERROR": "Oops, an error has occurred!",
   "NOT_FOUND": "This page was not found",
-  "BACK": "Back"
+  "BACK": "Back",
+  "TIC-TAC-TOE": "Tic Tac Toe",
+  "CHOOSE-GAME": "Select a game"
 }
