@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import "./index.css";
 import { TicTacToe } from ".";
+import { Button } from "../../components/button";
+import { useTranslation } from "react-i18next";
 
 export const TicTacToeRender = () => {
   const { t } = useTranslation();
