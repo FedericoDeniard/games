@@ -3,10 +3,12 @@ import "./index.css";
 import { TicTacToe } from ".";
 
 export const TicTacToeRender = () => {
+  const { t } = useTranslation();
+
   const gameRef = useRef(new TicTacToe({ initialValue: "" }));
   const [gameState, setGameState] = useState({
     board: gameRef.current.getBoard(),
-    hasWon: new Array(3),
+    hasWon: new Array(3).fill(undefined),
   });
 
   const updateGame = () => {
@@ -31,7 +33,16 @@ export const TicTacToeRender = () => {
     updateGame();
   };
 
+  const checkFinished = () => {
+    console.log(gameState.hasWon);
+    return (
+      gameState.hasWon.every((value) => value !== undefined) ||
+      gameState.board.every((value) => value !== "")
+    );
+  };
+
   return (
+    <>
     <div
       className="tic-tac-toe-board"
       style={{
@@ -43,10 +54,9 @@ export const TicTacToeRender = () => {
         {gameState.board.map((cell, index) => (
         <div
           className={`tic-tac-toe-cell ${
-              gameState.hasWon.every((value) => value !== null) &&
-              gameState.hasWon.includes(index)
+              checkFinished() && gameState.hasWon.includes(index)
               ? "tic-tac-toe-won"
-                : gameState.hasWon.some((value) => value !== null)
+                : checkFinished()
               ? "tic-tac-toe-lost"
               : ""
           } ${cell === "X" ? "tic-tac-toe-cross" : "tic-tac-toe-circle"}`}
@@ -57,5 +67,7 @@ export const TicTacToeRender = () => {
         </div>
       ))}
     </div>
+      {checkFinished() && <Button text={t("RESTART")} action={restartGame} />}
+    </>
   );
 };
