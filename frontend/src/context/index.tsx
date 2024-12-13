@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface AppConfig {
   sound: boolean;
@@ -6,7 +6,10 @@ interface AppConfig {
 }
 
 const initialAppConfig: AppConfig = {
-  sound: true,
+  sound: (() => {
+    const storedSound = localStorage.getItem("sound");
+    return storedSound ? JSON.parse(storedSound) : true;
+  })(),
   setSound: () => {},
 };
 
@@ -18,6 +21,10 @@ export const AppContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [sound, setSound] = useState<boolean>(initialAppConfig.sound);
+
+  useEffect(() => {
+    localStorage.setItem("sound", JSON.stringify(sound));
+  }, [sound]);
 
   return (
     <AppContext.Provider value={{ sound, setSound }}>
