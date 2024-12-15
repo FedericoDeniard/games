@@ -62,6 +62,12 @@ export const TicTacToeRender = () => {
     );
   };
 
+  const resultsMap = {
+    tie: "TIE",
+    X: "X_WON",
+    O: "O_WON",
+  };
+
   return (
     <div className="container">
       <div
@@ -87,8 +93,20 @@ export const TicTacToeRender = () => {
             {cell}
           </div>
         ))}
-        {gameState.winner && <p>Winner: {gameState.winner}</p>}
       </div>
+      {gameState.winner && (
+        <p className="tic-tac-toe-result">
+          {t("RESULT")}:{" "}
+          <span
+            className={gameState.winner ? resultsMap[gameState.winner] : "tie"}
+          >
+            {" "}
+            {gameState.winner
+              ? t(resultsMap[gameState.winner])
+              : t("NO_WINNER")}
+          </span>
+        </p>
+      )}
       {
         <Button
           text={t("RESTART")}

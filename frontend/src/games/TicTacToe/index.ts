@@ -7,7 +7,7 @@ export interface TicTacToeProps {
 export type Players = "X" | "O"
 export type Cell = Players | ""
 
-export type Results = string | null
+export type Results = Players | null | "tie"
 
 export class TicTacToe {
   private board: Cell[];
@@ -45,7 +45,7 @@ export class TicTacToe {
     while (i < lines.length && winner === null) {
       const [a, b, c] = lines[i];
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        winner = board[a];
+        winner = board[a] as Players;
       }
       i++;
     }
