@@ -4,12 +4,19 @@ import { NotFoundPage } from "../pages/NotFound/NotFound";
 import { TicTacToePage } from "../pages/Tic-Tae-Toe";
 import { SettingsPage } from "../pages/Config";
 
+export const TicTacToeRoutes = {
+  solo: "/tic-tac-toe",
+  ai: "/tic-tac-toe/ai",
+};
+
 export const RouterComponent = () => {
   return (
     <Routes>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/" element={<App />} />
-      <Route path="/tic-tac-toe" element={<TicTacToePage />} />
+      <Route path={TicTacToeRoutes.solo} element={<TicTacToePage />} />
+      <Route path={TicTacToeRoutes.ai} element={<TicTacToePage />} />
+
       <Route path="/settings" element={<SettingsPage />} />
     </Routes>
   );

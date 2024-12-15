@@ -8,6 +8,7 @@ import useSound from "use-sound";
 import clickSound from "../../assets/sounds/click.mp3";
 import { useAppConfig } from "../../context";
 import { TicTacToeVersusAI } from "./TicTacToeAI";
+import { TicTacToeRoutes } from "../../router/router";
 
 type TicTacToeRenderProps = {
   board: Cell[];
@@ -24,7 +25,15 @@ export const TicTacToeRender = () => {
     soundEnabled: soundOn,
   });
 
-  const gameRef = useRef(new TicTacToeVersusAI({ initialValue: "" }));
+  const gameMap = {
+    [TicTacToeRoutes.solo]: TicTacToe,
+    [TicTacToeRoutes.ai]: TicTacToeVersusAI,
+  };
+
+  const currentUrl = window.location.pathname;
+  const GameClass = gameMap[currentUrl] || TicTacToe;
+
+  const gameRef = useRef(new GameClass({ initialValue: "" }));
   const [gameState, setGameState] = useState<TicTacToeRenderProps>({
     board: gameRef.current.getBoard(),
     hasFinished: new Array(3).fill(undefined),
