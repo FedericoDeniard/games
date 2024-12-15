@@ -1,12 +1,19 @@
 import { useRef, useState } from "react";
 import "./index.css";
-import { TicTacToe } from ".";
+import { Cell, Results, TicTacToe } from ".";
 import { Button } from "../../components/button";
 import { useTranslation } from "react-i18next";
 
 import useSound from "use-sound";
 import clickSound from "../../assets/sounds/click.mp3";
 import { useAppConfig } from "../../context";
+import { TicTacToeVersusAI } from "./TicTacToeAI";
+
+type TicTacToeRenderProps = {
+  board: Cell[];
+  hasFinished: number[];
+  winner: Results;
+};
 
 export const TicTacToeRender = () => {
   const { t } = useTranslation();
@@ -17,17 +24,19 @@ export const TicTacToeRender = () => {
     soundEnabled: soundOn,
   });
 
-  const gameRef = useRef(new TicTacToe({ initialValue: "" }));
-  const [gameState, setGameState] = useState({
+  const gameRef = useRef(new TicTacToeVersusAI({ initialValue: "" }));
+  const [gameState, setGameState] = useState<TicTacToeRenderProps>({
     board: gameRef.current.getBoard(),
-    hasWon: new Array(3).fill(undefined),
+    hasFinished: new Array(3).fill(undefined),
+    winner: null,
   });
 
   const updateGame = () => {
     const game = gameRef.current;
     setGameState(() => ({
       board: [...game.getBoard()],
-      hasWon: [...game.getWon()],
+      hasFinished: [...game.getWon()],
+      winner: game.getWinner(),
     }));
   };
 
@@ -47,9 +56,8 @@ export const TicTacToeRender = () => {
   };
 
   const checkFinished = () => {
-    console.log(gameState.hasWon);
     return (
-      gameState.hasWon.every((value) => value !== undefined) ||
+      gameState.hasFinished.every((value) => value !== undefined) ||
       gameState.board.every((value) => value !== "")
     );
   };
@@ -67,7 +75,7 @@ export const TicTacToeRender = () => {
         {gameState.board.map((cell, index) => (
           <div
             className={`tic-tac-toe-cell ${
-              checkFinished() && gameState.hasWon.includes(index)
+              checkFinished() && gameState.hasFinished.includes(index)
                 ? "tic-tac-toe-won"
                 : checkFinished()
                 ? "tic-tac-toe-lost"
@@ -79,6 +87,7 @@ export const TicTacToeRender = () => {
             {cell}
           </div>
         ))}
+        {gameState.winner && <p>Winner: {gameState.winner}</p>}
       </div>
       {
         <Button
