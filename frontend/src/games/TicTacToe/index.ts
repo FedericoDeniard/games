@@ -1,5 +1,5 @@
 
-interface TicTacToeProps {
+export interface TicTacToeProps {
   initialValue?: string;
 }
 
@@ -25,7 +25,7 @@ export class TicTacToe {
     if (this.board[index] === "" && this.won.every((value) => value === null)) {
       this.board[index] = this.countTurn() % 2 === 0 ? "O" : "X";
       madeMove = true;
-      this.checkWin()
+      this.checkWin(this.board)
     }
     return madeMove
   }
@@ -35,10 +35,10 @@ export class TicTacToe {
     this.won = new Array(3);
   }
 
-  private checkWin(): boolean {
+  protected checkWin(board: string[]): boolean {
     let hasWon: boolean = false;
     let i = 0;
-    while (i < this.board.length && !hasWon) {
+    while (i < board.length && !hasWon) {
       if (i % 3 === 0 && this.checkLine(i, 1)) {
         hasWon = true;
       }
@@ -57,11 +57,11 @@ export class TicTacToe {
   }
 
 
-  private checkLine(i: number, step: number): boolean {
+  protected checkLine(i: number, step: number, board: string[] = this.board): boolean {
     let hasWon: boolean = false;
-    if (this.board[i] !== "" &&
-      this.board[i] === this.board[i + step] &&
-      this.board[i] === this.board[i + step * 2]) {
+    if (board[i] !== "" &&
+      board[i] === board[i + step] &&
+      board[i] === board[i + step * 2]) {
       hasWon = true
       this.won = [i, i + step, i + step * 2]
     }
@@ -69,7 +69,7 @@ export class TicTacToe {
   }
 
 
-  private countTurn(): number {
-    return this.board.filter((cell) => cell !== "").length;
+  protected countTurn(board: string[] = this.board): number {
+    return board.filter((cell) => cell !== "").length;
   }
 }
