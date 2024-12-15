@@ -98,7 +98,7 @@ export const TicTacToeRender = () => {
         <p className="tic-tac-toe-result">
           {t("RESULT")}:{" "}
           <span
-            className={gameState.winner ? resultsMap[gameState.winner] : "tie"}
+            className={gameState.winner ? resultsMap[gameState.winner] : ""}
           >
             {" "}
             {gameState.winner
