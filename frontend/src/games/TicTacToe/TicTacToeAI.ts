@@ -75,6 +75,7 @@ export class TicTacToeVersusAI extends TicTacToe {
                 if (board[i] === "") {
                     board[i] = this.ai;
                     let score = this.minimax(board, depth + 1, false)
+                    board[i] = "";
                     bestScore = Math.max(score, bestScore)
                 }
             }
@@ -86,6 +87,7 @@ export class TicTacToeVersusAI extends TicTacToe {
                 if (board[i] === "") {
                     board[i] = this.human;
                     let score = this.minimax(board, depth + 1, true)
+                    board[i] = "";
                     bestScore = Math.min(score, bestScore)
                 }
             }
