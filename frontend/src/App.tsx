@@ -19,6 +19,12 @@ function App() {
             width={150}
           />
           <Button
+            action={() => navigate("/tic-tac-toe/ai")}
+            text={t("TIC-TAC-TOE") + " vs " + t("AI")}
+            color="#4B5C5E"
+            width={150}
+          />
+          <Button
             action={() => navigate("/settings")}
             text={t("SETTINGS")}
             color="#4B5C5E"

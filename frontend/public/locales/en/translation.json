@@ -7,5 +7,10 @@
   "CHOOSE-GAME": "Select a game",
   "RESTART": "Restart game",
   "SETTINGS": "Settings",
-  "SOUND": "Sound"
+  "SOUND": "Sound",
+
+  "RESULT": "Result",
+  "TIE": "Draw",
+  "X_WON": "X won",
+  "O_WON": "O won"
 }

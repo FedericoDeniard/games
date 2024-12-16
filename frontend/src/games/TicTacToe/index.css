@@ -32,3 +32,15 @@
 .tic-tac-toe-circle {
   color: #ff4081;
 }
+
+.tic-tac-toe-result {
+  font-weight: 600;
+}
+
+.X_WON {
+  color: #2196f3;
+}
+
+.O_WON {
+  color: #ff4081;
+}
