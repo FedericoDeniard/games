@@ -47,7 +47,7 @@ export class TicTacToeVersusAI extends TicTacToe {
     }
 
     private bestMove(): number {
-        let currentBoard = this.getBoard()
+        let currentBoard = [...this.getBoard()]
         let bestScore = -Infinity
         let bestMovement: number = -1;
 
@@ -55,7 +55,6 @@ export class TicTacToeVersusAI extends TicTacToe {
             if (currentBoard[i] === "") {
                 currentBoard[i] = this.ai;
                 let score = this.minimax(currentBoard, 0, false)
-                currentBoard[i] = "";
                 if (score > bestScore) {
                     bestScore = score
                     bestMovement = i
@@ -76,7 +75,6 @@ export class TicTacToeVersusAI extends TicTacToe {
                 if (board[i] === "") {
                     board[i] = this.ai;
                     let score = this.minimax(board, depth + 1, false)
-                    board[i] = "";
                     bestScore = Math.max(score, bestScore)
                 }
             }
@@ -88,7 +86,6 @@ export class TicTacToeVersusAI extends TicTacToe {
                 if (board[i] === "") {
                     board[i] = this.human;
                     let score = this.minimax(board, depth + 1, true)
-                    board[i] = "";
                     bestScore = Math.min(score, bestScore)
                 }
             }
