@@ -55,6 +55,8 @@ export class TicTacToeVersusAI extends TicTacToe {
             if (currentBoard[i] === "") {
                 currentBoard[i] = this.ai;
                 let score = this.minimax(currentBoard, 0, false)
+                currentBoard[i] = "";
+
                 if (score > bestScore) {
                     bestScore = score
                     bestMovement = i
