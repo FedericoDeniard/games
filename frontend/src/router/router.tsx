@@ -16,6 +16,7 @@ export const RouterComponent = () => {
       <Route path="/" element={<App />} />
       <Route path={TicTacToeRoutes.solo} element={<TicTacToePage />} />
       <Route path={TicTacToeRoutes.ai} element={<TicTacToePage />} />
+      <Route path="/simon" element={<SimonPage />} />
 
       <Route path="/settings" element={<SettingsPage />} />
     </Routes>

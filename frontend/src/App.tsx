@@ -25,6 +25,12 @@ function App() {
             width={150}
           />
           <Button
+            action={() => navigate("/Simon")}
+            text="Simon"
+            color="#4B5C5E"
+            width={150}
+          />
+          <Button
             action={() => navigate("/settings")}
             text={t("SETTINGS")}
             color="#4B5C5E"
