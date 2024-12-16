@@ -21,8 +21,6 @@ export class TicTacToeVersusAI extends TicTacToe {
 
             let gameOver = this.checkFinished(board)
             if (gameOver) {
-                let whoWon = this.countTurn(board) % 2 === 0 ? "X" : "O";
-                console.log(`Gano: ${whoWon}`);
                 return madeMove;
             }
             this.switchPlayer();
@@ -38,9 +36,7 @@ export class TicTacToeVersusAI extends TicTacToe {
         let board = this.getBoard();
         board[bestMovement] = this.ai;
         let gameOver = this.checkFinished(board)
-        if (gameOver) {
-            console.log("Gano: ", this.getCurrentPlayer())
-        } else {
+        if (!gameOver) {
             this.switchPlayer()
         }
 
@@ -105,7 +101,6 @@ export class TicTacToeVersusAI extends TicTacToe {
 
     public reset(): void {
         super.reset()
-        console.log("Reseteando")
         this.setCurrentPlayer(this.human)
     }
 }
