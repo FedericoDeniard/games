@@ -4,6 +4,7 @@ import { Colour, Simon } from "./Simon";
 import SimonSounds from "../../assets/sounds/simon/simon.wav";
 import useSound from "use-sound";
 import { Button } from "../../components/button";
+import { useTranslation } from "react-i18next";
 
 type GameRenderProps = {
   currentColourShowed: undefined | Colour;
@@ -14,6 +15,7 @@ type GameRenderProps = {
 };
 
 export const SimonRender = () => {
+  const { t } = useTranslation();
   const [playSimonSound] = useSound(SimonSounds, {
     sprite: {
       1: [0, 100],
@@ -123,7 +125,7 @@ export const SimonRender = () => {
       </div>
       <Button
         action={startGame}
-        text={"Start"}
+        text={t("START-GAME")}
         disabled={gameRenderProps.gameStarted && !gameRenderProps.lost}
       />
     </div>

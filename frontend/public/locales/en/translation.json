@@ -12,5 +12,7 @@
   "RESULT": "Result",
   "TIE": "Draw",
   "X_WON": "X won",
-  "O_WON": "O won"
+  "O_WON": "O won",
+
+  "START-GAME": "Start Game"
 }
