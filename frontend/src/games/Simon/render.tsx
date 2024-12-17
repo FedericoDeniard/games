@@ -113,6 +113,17 @@ export const SimonRender = () => {
   return (
     <div className="container">
       <div className="simon-board">
+        <div
+          className={`simon-turn ${gameRenderProps.playerTurn ? "pulse" : ""}`}
+          style={{
+            backgroundColor: gameRenderProps.playerTurn ? "green" : "red",
+            visibility: gameRenderProps.gameStarted ? "visible" : "hidden",
+          }}
+        >
+          <p style={{ color: "white" }}>
+            {gameRenderProps.playerTurn ? "▶" : "| |"}
+          </p>
+        </div>
         {[...Array(4)].map((_, i) => (
           <button
             disabled={
