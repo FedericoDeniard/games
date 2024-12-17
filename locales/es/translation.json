@@ -1,0 +1,18 @@
+{
+  "HELLO": "¡Bienvenido!",
+  "ERROR": "¡Oops, ha ocurrido un error!",
+  "NOT_FOUND": "No se pudo encontrar la página",
+  "BACK": "Atrás",
+  "TIC-TAC-TOE": "Ta Te Ti",
+  "CHOOSE-GAME": "Selecciona un juego",
+  "RESTART": "Reiniciar juego",
+  "SETTINGS": "Ajustes",
+  "SOUND": "Sonido",
+
+  "RESULT": "Resultado",
+  "TIE": "Empate",
+  "X_WON": "Ganó X",
+  "O_WON": "Ganó O",
+
+  "START-GAME": "Empezar juego"
+}

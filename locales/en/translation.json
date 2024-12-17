@@ -1,0 +1,18 @@
+{
+  "HELLO": "Welcome!",
+  "ERROR": "Oops, an error has occurred!",
+  "NOT_FOUND": "This page was not found",
+  "BACK": "Back",
+  "TIC-TAC-TOE": "Tic Tac Toe",
+  "CHOOSE-GAME": "Select a game",
+  "RESTART": "Restart game",
+  "SETTINGS": "Settings",
+  "SOUND": "Sound",
+
+  "RESULT": "Result",
+  "TIE": "Draw",
+  "X_WON": "X won",
+  "O_WON": "O won",
+
+  "START-GAME": "Start Game"
+}
