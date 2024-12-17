@@ -23,7 +23,7 @@ export class Simon {
 
     }
 
-    public startSequence(): void {
+    public extendSequence(): void {
         this.sequence.push(this.getNextColour())
     }
 
