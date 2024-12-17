@@ -1,4 +1,4 @@
-const AvailableColours: { [key: number]: { normal: string, active: string } } = {
+export const AvailableColours: { [key: number]: { normal: string, active: string } } = {
     1: { normal: "#ff8080", active: "#ff3333" }, // pastel red / pressed red
     2: { normal: "#80ff80", active: "#33cc33" }, // pastel green / pressed green
     3: { normal: "#8080ff", active: "#3333ff" }, // pastel blue / pressed blue

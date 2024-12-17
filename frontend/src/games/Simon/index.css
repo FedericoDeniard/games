@@ -11,6 +11,7 @@
   margin-bottom: 60px;
   color: black;
   rotate: 45deg;
+  user-select: none;
 }
 
 .simon-cell {
