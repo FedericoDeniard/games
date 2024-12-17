@@ -1,0 +1,79 @@
+.simon-board {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  gap: 10px;
+  width: 200px;
+  aspect-ratio: 1/1;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  color: black;
+  rotate: 45deg;
+}
+
+.simon-cell {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.simon-cell-1:active {
+  background-color: #ff3333;
+}
+
+.simon-cell-1,
+.simon-cell-1:disabled {
+  background-color: #ff8080;
+  border-top-left-radius: 500px;
+  border-bottom-right-radius: 50px;
+}
+
+.simon-cell-active-1:disabled {
+  background-color: #ff3333;
+}
+
+.simon-cell-2:active {
+  background-color: #33cc33;
+}
+
+.simon-cell-2,
+.simon-cell-2:disabled {
+  background-color: #80ff80;
+  border-top-right-radius: 500px;
+  border-bottom-left-radius: 50px;
+}
+
+.simon-cell-active-2:disabled {
+  background-color: #33cc33;
+}
+
+.simon-cell-3:active {
+  background-color: #3333ff;
+}
+
+.simon-cell-3,
+.simon-cell-3:disabled {
+  background-color: #8080ff;
+  border-bottom-left-radius: 500px;
+  border-top-right-radius: 50px;
+}
+
+.simon-cell-active-3:disabled {
+  background-color: #3333ff;
+}
+
+.simon-cell-4:active {
+  background-color: #ffff00;
+}
+
+.simon-cell-4,
+.simon-cell-4:disabled {
+  background-color: #ffff80;
+  border-bottom-right-radius: 500px;
+  border-top-left-radius: 50px;
+}
+
+.simon-cell-active-4:disabled {
+  background-color: #ffff00;
+}
