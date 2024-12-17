@@ -6,15 +6,32 @@ const AvailableColours: { [key: number]: { normal: string, active: string } } = 
 };
 
 
-type Colour = 1 | 2 | 3 | 4;
+export type Colour = 1 | 2 | 3 | 4;
 
 export class Simon {
     private sequence: Colour[] = [];
     private playerSequence: Colour[] = [];
+    private currentColorShowed: Colour | undefined = undefined;
 
     constructor() { }
 
     private getNextColour(): Colour {
         return Math.floor(Math.random() * 4) + 1 as Colour;
+    }
+
+    public startGame(): void {
+
+    }
+
+    public startSequence(): void {
+        this.sequence.push(this.getNextColour())
+    }
+
+    public getCurrentColorShowed(): Colour | undefined {
+        return this.currentColorShowed
+    }
+
+    public getSequence(): Colour[] {
+        return this.sequence
     }
 }

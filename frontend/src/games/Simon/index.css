@@ -24,7 +24,8 @@
   border-bottom-right-radius: 50px;
 }
 
-.simon-cell-1:active {
+.simon-cell-1:active,
+.simon-cell-active-1 {
   background-color: #ff3333;
 }
 
@@ -34,7 +35,8 @@
   border-bottom-left-radius: 50px;
 }
 
-.simon-cell-2:active {
+.simon-cell-2:active,
+.simon-cell-active-2 {
   background-color: #33cc33;
 }
 
@@ -44,7 +46,8 @@
   border-top-right-radius: 50px;
 }
 
-.simon-cell-3:active {
+.simon-cell-3:active,
+.simon-cell-active-3 {
   background-color: #3333ff;
 }
 .simon-cell-4 {
@@ -53,6 +56,7 @@
   border-top-left-radius: 50px;
 }
 
-.simon-cell-4:active {
+.simon-cell-4:active,
+.simon-cell-active-4 {
   background-color: #ffff00;
 }
