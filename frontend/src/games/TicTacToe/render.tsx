@@ -30,7 +30,8 @@ export const TicTacToeRender = () => {
     [TicTacToeRoutes.ai]: TicTacToeVersusAI,
   };
 
-  const currentUrl = window.location.pathname;
+  const currentUrl = window.location.hash.replace("#", "");
+
   const GameClass = gameMap[currentUrl] || TicTacToe;
 
   const gameRef = useRef(new GameClass({ initialValue: "" }));

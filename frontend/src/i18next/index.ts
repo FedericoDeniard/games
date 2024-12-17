@@ -13,6 +13,11 @@ i18n
         // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
         fallbackLng: "en",
         debug: false,
+        supportedLngs: ['en', 'es'],
+        backend: {
+            loadPath: '/games/locales/{{lng}}/translation.json',
+        },
+
 
         interpolation: {
             escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
