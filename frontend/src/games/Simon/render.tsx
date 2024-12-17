@@ -76,6 +76,7 @@ export const SimonRender = () => {
       <div className="simon-board">
         {[...Array(4)].map((_, i) => (
           <button
+            disabled={!gameRenderProps.playerTurn}
             type="button"
             onClick={() => playSimonSound({ id: (i + 1).toString() })}
             key={i}
@@ -87,7 +88,11 @@ export const SimonRender = () => {
           ></button>
         ))}
       </div>
-      <Button action={visualizeSequence} text={"Start"} />
+      <Button
+        action={visualizeSequence}
+        text={"Start"}
+        disabled={!gameRenderProps.playerTurn}
+      />
     </div>
   );
 };

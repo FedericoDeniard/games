@@ -18,45 +18,62 @@
   cursor: pointer;
 }
 
-.simon-cell-1 {
+.simon-cell-1:active {
+  background-color: #ff3333;
+}
+
+.simon-cell-1,
+.simon-cell-1:disabled {
   background-color: #ff8080;
   border-top-left-radius: 500px;
   border-bottom-right-radius: 50px;
 }
 
-.simon-cell-1:active,
-.simon-cell-active-1 {
+.simon-cell-active-1:disabled {
   background-color: #ff3333;
 }
 
-.simon-cell-2 {
+.simon-cell-2:active {
+  background-color: #33cc33;
+}
+
+.simon-cell-2,
+.simon-cell-2:disabled {
   background-color: #80ff80;
   border-top-right-radius: 500px;
   border-bottom-left-radius: 50px;
 }
 
-.simon-cell-2:active,
-.simon-cell-active-2 {
+.simon-cell-active-2:disabled {
   background-color: #33cc33;
 }
 
-.simon-cell-3 {
+.simon-cell-3:active {
+  background-color: #3333ff;
+}
+
+.simon-cell-3,
+.simon-cell-3:disabled {
   background-color: #8080ff;
   border-bottom-left-radius: 500px;
   border-top-right-radius: 50px;
 }
 
-.simon-cell-3:active,
-.simon-cell-active-3 {
+.simon-cell-active-3:disabled {
   background-color: #3333ff;
 }
-.simon-cell-4 {
+
+.simon-cell-4:active {
+  background-color: #ffff00;
+}
+
+.simon-cell-4,
+.simon-cell-4:disabled {
   background-color: #ffff80;
   border-bottom-right-radius: 500px;
   border-top-left-radius: 50px;
 }
 
-.simon-cell-4:active,
-.simon-cell-active-4 {
+.simon-cell-active-4:disabled {
   background-color: #ffff00;
 }
