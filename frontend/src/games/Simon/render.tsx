@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./index.css";
 import { Colour, Simon } from "./Simon";
 import SimonSounds from "../../assets/sounds/simon/simon.wav";
+import LostSound from "../../assets/sounds/simon/lost.mp3";
 import useSound from "use-sound";
 import { Button } from "../../components/button";
 import { useTranslation } from "react-i18next";
@@ -24,6 +25,7 @@ export const SimonRender = () => {
       4: [300, 100],
     },
   });
+  const [playLost] = useSound(LostSound);
 
   const gameRef = useRef(new Simon());
   const [gameRenderProps, setGameRenderProps] = useState<GameRenderProps>({
@@ -84,10 +86,14 @@ export const SimonRender = () => {
       playSimonSound({ id: buttonPressed.toString() });
       const game = gameRef.current;
       let completed = game.makePlayerMove(buttonPressed);
+      const hasLost = game.getLost();
       setGameRenderProps((prevState) => ({
         ...prevState,
-        lost: game.getLost(),
+        lost: hasLost,
       }));
+      if (hasLost) {
+        playLost();
+      }
       if (completed) {
         setGameRenderProps((prevState) => ({
           ...prevState,
