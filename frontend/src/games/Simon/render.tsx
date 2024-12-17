@@ -10,6 +10,7 @@ type GameRenderProps = {
   playerTurn: boolean;
   sequence: Colour[];
   gameStarted: boolean;
+  lost: boolean;
 };
 
 export const SimonRender = () => {
@@ -24,19 +25,24 @@ export const SimonRender = () => {
 
   const gameRef = useRef(new Simon());
   const [gameRenderProps, setGameRenderProps] = useState<GameRenderProps>({
-    currentColourShowed: gameRef.current.getCurrentColorShowed(),
+    currentColourShowed: undefined,
     playerTurn: true,
     sequence: gameRef.current.getSequence(),
     gameStarted: false,
+    lost: true,
   });
 
-  const visualizeSequence = async () => {
-    if (gameRenderProps.playerTurn) {
+  const startGame = async () => {
+    gameRenderProps.currentColourShowed = undefined;
+    gameRenderProps.playerTurn = false;
+    gameRenderProps.gameStarted = true;
+    gameRenderProps.lost = false;
       const game = gameRef.current;
-      game.extendSequence();
+    game.startGame();
+    gameRenderProps.sequence = gameRef.current.getSequence();
+    gameRenderProps.lost = gameRef.current.getLost();
 
       await showColors();
-    }
   };
 
   const showColors = () => {
@@ -71,14 +77,41 @@ export const SimonRender = () => {
     });
   };
 
+  const makeMove = (buttonPressed: Colour) => {
+    if (!gameRenderProps.lost) {
+      playSimonSound({ id: buttonPressed.toString() });
+      const game = gameRef.current;
+      let completed = game.makePlayerMove(buttonPressed);
+      setGameRenderProps((prevState) => ({
+        ...prevState,
+        lost: game.getLost(),
+      }));
+      if (completed) {
+        setGameRenderProps((prevState) => ({
+          ...prevState,
+          playerTurn: false,
+        }));
+        setTimeout(() => {
+          showColors();
+        }, 2000);
+      }
+    }
+  };
+
+  const handleClick = (button: Colour) => {
+    makeMove(button);
+  };
+
   return (
     <div className="container">
       <div className="simon-board">
         {[...Array(4)].map((_, i) => (
           <button
-            disabled={!gameRenderProps.playerTurn}
+            disabled={
+              !gameRenderProps.playerTurn || !gameRenderProps.gameStarted
+            }
             type="button"
-            onClick={() => playSimonSound({ id: (i + 1).toString() })}
+            onClick={() => handleClick((i + 1) as Colour)}
             key={i}
             className={`simon-cell simon-cell-${i + 1} ${
               gameRenderProps.currentColourShowed === i + 1
@@ -89,9 +122,9 @@ export const SimonRender = () => {
         ))}
       </div>
       <Button
-        action={visualizeSequence}
+        action={startGame}
         text={"Start"}
-        disabled={!gameRenderProps.playerTurn}
+        disabled={gameRenderProps.gameStarted && !gameRenderProps.lost}
       />
     </div>
   );

@@ -11,7 +11,7 @@ export type Colour = 1 | 2 | 3 | 4;
 export class Simon {
     private sequence: Colour[] = [];
     private playerSequence: Colour[] = [];
-    private currentColorShowed: Colour | undefined = undefined;
+    private lost = false
 
     constructor() { }
 
@@ -20,18 +20,44 @@ export class Simon {
     }
 
     public startGame(): void {
-
+        this.lost = false
+        this.playerSequence = []
+        this.sequence = []
+        this.extendSequence()
     }
 
     public extendSequence(): void {
+        this.playerSequence = []
         this.sequence.push(this.getNextColour())
     }
 
-    public getCurrentColorShowed(): Colour | undefined {
-        return this.currentColorShowed
+    public makePlayerMove(buttonPressed: Colour): boolean {
+        let completed = false
+        if (!this.lost) {
+            this.playerSequence.push(buttonPressed);
+            const succesfull = this.checkSequence();
+            if (!succesfull) {
+                this.lost = true
+            }
+            else if (succesfull && JSON.stringify(this.playerSequence) === JSON.stringify(this.sequence)) {
+                completed = true
+                this.extendSequence()
+            }
+        }
+        return completed
     }
+
 
     public getSequence(): Colour[] {
         return this.sequence
+    }
+
+    public getLost(): boolean {
+        return this.lost
+    }
+
+    public checkSequence(): boolean {
+        const lastButtonPressed = this.playerSequence[this.playerSequence.length - 1];
+        return lastButtonPressed === this.sequence[this.playerSequence.length - 1];
     }
 }
