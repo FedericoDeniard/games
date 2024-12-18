@@ -93,6 +93,10 @@ export const SimonRender = () => {
       }));
       if (hasLost) {
         playLost();
+        setGameRenderProps((prevState) => ({
+          ...prevState,
+          gameStarted: false,
+        }));
       }
       if (completed) {
         setGameRenderProps((prevState) => ({
