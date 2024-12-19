@@ -13,6 +13,7 @@ type GameRenderProps = {
   sequence: Colour[];
   gameStarted: boolean;
   lost: boolean;
+  record: number | null;
 };
 
 export const SimonRender = () => {
@@ -34,6 +35,7 @@ export const SimonRender = () => {
     sequence: gameRef.current.getSequence(),
     gameStarted: false,
     lost: true,
+    record: gameRef.current.getRecord(),
   });
 
   const startGame = async () => {
@@ -90,6 +92,7 @@ export const SimonRender = () => {
       setGameRenderProps((prevState) => ({
         ...prevState,
         lost: hasLost,
+        record: game.getRecord(),
       }));
       if (hasLost) {
         playLost();
@@ -116,6 +119,7 @@ export const SimonRender = () => {
 
   return (
     <div className="container">
+      <p>Record: {gameRenderProps.record} </p>
       <div className="simon-board">
         <div
           className={`simon-turn ${gameRenderProps.playerTurn ? "pulse" : ""}`}
